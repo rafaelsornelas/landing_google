@@ -1,0 +1,374 @@
+/* Identidade visual: Google Workspace Brand Guidelines for Sebrae (July 2026).
+   Título/subtítulo: Google Sans Flex Medium, tracking -10. Corpo: Regular. Texto: #212226.
+   Exceção consciente: entrelinha do corpo em 1.4 (o manual sugere 1.05 como ponto de partida
+   para peças curtas; em parágrafos na web isso prejudica a leitura). */
+
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("assets/fonts/GoogleSansFlex-400-500.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+:root {
+  --tinta: #212226;
+  --preto: #000;
+  --branco: #fff;
+  --n10: #f8f9fc;
+  --n20: #eff2f7;
+  --n50: #e6eaf0;
+  --gutter: clamp(16px, 4vw, 40px);
+  --largura: 1200px;
+  --h1: clamp(30px, 8.4vw, 72px);
+  --h2: clamp(32px, 4.2vw, 56px);
+  --h3: clamp(24px, 2.4vw, 28px);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--branco);
+  color: var(--tinta);
+  font-family: "Google Sans Flex", Roboto, Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 { font-size: var(--h1); line-height: 1.02; }
+h2 { font-size: var(--h2); line-height: 1.02; }
+h3 { font-size: var(--h3); line-height: 1.1; }
+
+p { margin: 0; }
+strong { font-weight: 500; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+a:focus-visible {
+  outline: 3px solid #3186ff;
+  outline-offset: 3px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.interno {
+  width: 100%;
+  max-width: calc(var(--largura) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.secao { padding-block: clamp(56px, 8vw, 112px); }
+
+/* Botão: cápsula preta, como nos modelos de banner do manual */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--preto);
+  color: var(--branco);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s ease;
+}
+.botao:hover { background: #2f3034; }
+
+.nota { font-size: 15px; }
+
+.selo { font-size: 20px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+
+/* Faixa: primeira leitura da página. Fundo neutro, pois o manual reserva o preto ao Gemini */
+.faixa {
+  padding: 12px var(--gutter);
+  background: var(--n20);
+  font-size: 17px;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Topo. Logo em 48px: tamanho mínimo digital do lockup "with Gemini" */
+.topo { padding-block: 24px; }
+.topo__interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: calc(var(--largura) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.topo__logo { width: auto; height: 48px; }
+
+/* Composição: "stack" oficial do manual com a mensagem dentro do overlay.
+   O manual proíbe overlay vazio e corte nas duas pontas: o lado curvo fica sempre visível. */
+.composicao {
+  --esq: 8%;
+  position: relative;
+  container-type: inline-size;
+}
+.composicao > img { width: 100%; }
+.composicao__texto {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.composicao--drive .composicao__texto { left: 13.5%; top: 21%; width: 58%; height: 68%; }
+.composicao--drive h1 { font-size: 6.6cqw; }
+
+.composicao--meet .composicao__texto { left: 10.5%; top: 8%; width: 58%; height: 64%; }
+.composicao--meet h2 { font-size: 6.6cqw; }
+
+.composicao--preto .composicao__texto { left: 9.5%; top: 14%; width: 60%; height: 74%; }
+.composicao--preto h2 { color: var(--branco); font-size: 4.3cqw; line-height: 1.06; }
+
+/* Hero e bloco final */
+.hero, .final {
+  overflow-x: clip;
+  max-width: calc(var(--largura) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+/* Limita a altura para o botão e o aviso aparecerem na primeira dobra (1.86 = proporção da imagem) */
+.hero .composicao { width: min(100%, 980px, max(640px, (100svh - 355px) * 1.86)); margin-inline: auto; }
+.final .composicao { width: min(100%, 820px); margin-inline: auto; }
+
+.hero__base {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-top: clamp(16px, 2vw, 24px);
+}
+.hero__acao { display: grid; justify-items: start; gap: 16px; }
+
+.aviso {
+  display: grid;
+  gap: 8px;
+  padding: clamp(20px, 2.4vw, 32px);
+  border: 1px solid var(--n50);
+  border-radius: 24px;
+  background: var(--n10);
+}
+.aviso__titulo { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+
+/* Introdução */
+.intro__grade {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.intro__texto { display: grid; gap: 16px; font-size: 20px; }
+.linha-icones { display: flex; flex-wrap: wrap; gap: clamp(14px, 2vw, 24px); margin-top: 32px; }
+.linha-icones img { width: clamp(38px, 4.4vw, 52px); }
+
+/* Como aproveitar */
+.como { background: var(--n10); }
+.passos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.passos li {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: clamp(24px, 2.6vw, 32px);
+  border-radius: 24px;
+  background: var(--branco);
+}
+.passos__numero { font-size: var(--h2); font-weight: 500; line-height: 1; letter-spacing: -0.01em; }
+
+/* Placeholder de rascunho: precisa ser removido antes de publicar */
+.pendente {
+  padding: 12px 14px;
+  border: 2px dashed #d05600;
+  border-radius: 12px;
+  background: #feffe1;
+}
+
+/* Apps. Ícone como âncora de texto: 2x a altura da maiúscula, com 1x de respiro, sempre acima */
+.apps__titulo { max-width: 22ch; }
+.apps__grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 64px) clamp(24px, 4vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.app__imagem { width: 100%; margin-bottom: 16px; }
+.ancora {
+  width: calc(var(--h3) * 1.4);
+  height: calc(var(--h3) * 1.4);
+  margin-bottom: calc(var(--h3) * 0.7);
+}
+.app h3 { margin-bottom: 10px; }
+.apps__mais {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--n50);
+}
+.app--destaque { align-self: start; }
+.app--destaque h3 { margin-top: calc(var(--h3) * 2.1); }
+
+/* Gemini: fundo preto é reservado às mensagens sobre o Gemini */
+.gemini {
+  overflow-x: clip;
+  padding-block: clamp(56px, 8vw, 112px);
+  background: var(--preto);
+  color: var(--branco);
+}
+.gemini__grade {
+  display: grid;
+  grid-template-columns: 1.9fr 1fr;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: center;
+}
+.gemini__texto { display: grid; gap: 16px; font-size: 20px; }
+.spark {
+  display: inline-block;
+  width: 0.72em;
+  height: 0.72em;
+  margin-right: 0.2em;
+  vertical-align: -0.02em;
+}
+
+/* Público */
+.publico__lista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.publico__lista li { padding-top: 20px; border-top: 1px solid var(--tinta); }
+.publico__lista h3 { margin-bottom: 10px; }
+.publico h2 { max-width: 24ch; }
+
+/* Planos */
+.planos { padding-top: 0; }
+.planos__intro { max-width: 58ch; margin-top: 16px; font-size: 20px; }
+.planos__grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.plano {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(24px, 2.6vw, 32px);
+  border: 1px solid var(--n50);
+  border-radius: 24px;
+  background: var(--branco);
+}
+.plano ul { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--n50); }
+.plano__preco { font-size: 24px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+.plano__preco span { display: block; font-size: 16px; font-weight: 400; letter-spacing: 0; }
+.capsula {
+  position: absolute;
+  top: clamp(24px, 2.6vw, 32px);
+  right: clamp(24px, 2.6vw, 32px);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--preto);
+  color: var(--branco);
+  font-size: 14px;
+  font-weight: 500;
+}
+.planos__nota { margin-top: 24px; }
+
+/* Final */
+.final { padding-bottom: clamp(56px, 8vw, 112px); }
+
+/* Rodapé */
+.rodape {
+  padding-block: 40px;
+  background: var(--n10);
+  font-size: 15px;
+}
+.rodape__grade {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.rodape__grade > div { display: grid; gap: 8px; max-width: 80ch; }
+.rodape__logo { width: 96px; height: auto; }
+
+/* Tablet */
+@media (max-width: 960px) {
+  .intro__grade, .gemini__grade { grid-template-columns: minmax(0, 1fr); }
+  .passos, .publico__lista, .planos__grade { grid-template-columns: 1fr; }
+  .apps__mais { grid-template-columns: 1fr 1fr; }
+  .app--destaque { grid-column: 1 / -1; }
+  .app--destaque h3 { margin-top: 0; }
+}
+
+/* Celular: a composição estoura à direita, com a ponta curva do overlay visível à esquerda */
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+  .topo__botao { display: none; }
+  .faixa__resto { display: none; } /* a mesma informação está no aviso, logo abaixo do botão */
+  .hero, .final { padding-inline: 0; }
+  .hero .composicao, .final .composicao, .gemini .composicao {
+    --s: 172vw;
+    width: var(--s);
+    max-width: none;
+    margin-left: calc(var(--margem) - var(--borda) * var(--s));
+    margin-right: 0;
+  }
+  .composicao--drive { --borda: .079; --margem: 8px; }
+  .composicao--meet { --borda: .049; --margem: 8px; }
+  .composicao--preto { --borda: .044; --margem: calc(8px - var(--gutter)); }
+  .hero .composicao { margin-top: -6vw; }
+
+  .composicao .composicao__texto {
+    left: calc(var(--borda) * var(--s) + 26px);
+    width: calc(100vw - 8px - 26px - 16px);
+  }
+  .composicao--drive h1 { font-size: clamp(26px, 8.2vw, 44px); }
+  .composicao--meet h2 { font-size: clamp(26px, 8.2vw, 44px); }
+  .composicao--preto h2 { font-size: clamp(22px, 6.4vw, 34px); }
+
+  .hero__base {
+    grid-template-columns: 1fr;
+    padding-inline: var(--gutter);
+  }
+  .apps__grade, .apps__mais { grid-template-columns: 1fr; }
+  .intro__texto, .gemini__texto, .planos__intro { font-size: 18px; }
+  .rodape__grade { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botao { transition: none; }
+}
